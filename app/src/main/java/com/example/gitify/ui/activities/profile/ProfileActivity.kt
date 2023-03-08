@@ -1,0 +1,161 @@
+package com.example.gitify.ui.activities.profile
+
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
+import com.example.gitify.R
+import com.example.gitify.databinding.ActivityProfileBinding
+import com.example.gitify.preferences.SharedPreferences
+import com.example.gitify.ui.activities.repo.RepoActivity
+import com.example.gitify.ui.activities.signin.SignInActivity
+import com.example.gitify.utils.Constants.EXTRA_ACCESS_TOKEN
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+@AndroidEntryPoint
+class ProfileActivity : AppCompatActivity() {
+  companion object{
+    @JvmStatic
+    fun startActivity(context: Context, accessToken: String){
+      val intent = Intent(context, ProfileActivity::class.java)
+      intent.putExtra(EXTRA_ACCESS_TOKEN, accessToken)
+      intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+      context.startActivity(intent)
+    }
+  }
+
+  private lateinit var sharedPref: SharedPreferences
+  private lateinit var binding: ActivityProfileBinding
+  private val viewModel by viewModels<ProfileViewModel>()
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_profile)
+
+    binding = ActivityProfileBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    setSupportActionBar(binding.appToolbar)
+    supportActionBar?.setDisplayShowTitleEnabled(false)
+
+    sharedPref = SharedPreferences(this)
+
+    val accessToken = intent?.getStringExtra(EXTRA_ACCESS_TOKEN)
+    accessToken?.let {
+      viewModel.getUserData(it)
+    }
+
+    viewModel.userData.observe(this) {
+      Toast.makeText(this, "Hi, ${it.name}", Toast.LENGTH_SHORT).show()
+    }
+
+    setProfileDataToDB()
+    setNavigationHandler()
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    val inflater: MenuInflater = menuInflater
+    inflater.inflate(R.menu.menu_options, menu)
+    return true
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+      R.id.sign_out_btn -> {
+        logout()
+        true
+      }
+      else -> super.onOptionsItemSelected(item)
+    }
+  }
+
+  private fun logout() {
+    sharedPref.accessToken = ""
+    Toast.makeText(this, "Logout success!", Toast.LENGTH_SHORT).show()
+    val intent = Intent(this, SignInActivity::class.java)
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    startActivity(intent)
+    finish()
+  }
+
+  private fun setProfileDataToDB() {
+    CoroutineScope(Dispatchers.Main).launch {
+      val user = viewModel.getUserByName("Rohan Raj Gupta")
+      if (user == null) {
+        viewModel.userData.observe(this@ProfileActivity) {
+          CoroutineScope(Dispatchers.Main).launch {
+            val user = viewModel.getUserByName("Rohan Raj Gupta")
+            if (user == null) {
+              viewModel.insert(it)
+            } else {
+              viewModel.update(it)
+            }
+            Log.d("ProfileActivity", "setProfileDataToDB: ${it.bio}")
+
+            Log.d("ProfileActivity1", "setProfileDataToDB: ${user?.bio}")
+          }.invokeOnCompletion { setProfileData() }
+        }
+      }
+      else {
+        Log.d("ProfileActivity", "setProfileDataToDB: ${user.bio}")
+        setProfileData()
+
+        viewModel.userData.observe(this@ProfileActivity) {
+          CoroutineScope(Dispatchers.Main).launch {
+            val user = viewModel.getUserByName("Rohan Raj Gupta")
+            viewModel.update(it)
+          }.invokeOnCompletion { setProfileData() }
+        }
+      }
+    }
+  }
+
+  private fun setProfileData() {
+//    viewModel.userData.observe(this) {
+//      binding.tvName.text = it?.name
+//      binding.tvUsername.text = it?.username
+//      binding.tvCompany.text = it?.company
+//      binding.tvLocation.text = it?.location
+//      binding.tvBio.text = it?.bio
+//      binding.tvFollowers.text = it?.followers.toString()
+//      binding.tvFollowing.text = it?.following.toString()
+//      Glide.with(binding.ivAvatar.context)
+//        .load(it?.avatarUrl)
+//        .into(binding.ivAvatar)
+//    }
+    // set profile data from db
+    CoroutineScope(Dispatchers.Main).launch {
+      val user = viewModel.getUserByName("Rohan Raj Gupta")
+      binding.tvName.text = user?.name
+      binding.tvUsername.text = user?.username
+      binding.tvCompany.text = user?.company
+      binding.tvLocation.text = user?.location
+      binding.tvBio.text = user?.bio
+      binding.tvFollowers.text = user?.followers.toString()
+      binding.tvFollowing.text = user?.following.toString()
+      Glide.with(binding.ivAvatar.context)
+        .load(user?.avatarUrl)
+        .into(binding.ivAvatar)
+
+      binding.scrollView.isVisible = true
+      binding.pbProfile.isGone = true
+    }
+  }
+
+  private fun setNavigationHandler() {
+    binding.btnRepositories.setOnClickListener {
+        sharedPref.accessToken?.let { data -> RepoActivity.startActivity(this, data) }
+    }
+  }
+}

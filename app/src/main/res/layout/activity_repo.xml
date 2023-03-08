@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activities.repo.RepoActivity">
+
+  <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/app_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="?attr/actionBarSize"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <ImageView
+          android:id="@+id/iv_logo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:src="@drawable/gitify"
+          android:layout_gravity="center"
+          android:contentDescription="@string/app_name" />
+
+      <com.google.android.material.appbar.MaterialToolbar
+          android:id="@+id/app_toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          app:menu="@menu/menu_options" />
+
+    </FrameLayout>
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_repository"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clipToPadding="false"
+      android:visibility="invisible"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/app_bar"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      tools:listitem="@layout/item_repository" />
+
+  <ProgressBar
+      android:id="@+id/pb_repo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

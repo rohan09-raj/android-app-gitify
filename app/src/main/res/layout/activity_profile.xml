@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.profile.ProfileActivity">
+
+  <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/app_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="?attr/actionBarSize"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/scroll_view">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <com.google.android.material.appbar.MaterialToolbar
+          android:id="@+id/app_toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          app:menu="@menu/menu_options" />
+
+      <ImageView
+          android:id="@+id/iv_logo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/toolbar_icon_padding"
+          android:src="@drawable/gitify"
+          android:layout_gravity="center"
+          android:contentDescription="@string/app_name" />
+
+    </FrameLayout>
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <ScrollView
+      android:id="@+id/scroll_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="invisible"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/app_bar">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/profile_ll_margin"
+        android:orientation="vertical">
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:id="@+id/ll_profile"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/profile_image_size"
+            android:layout_height="@dimen/profile_image_size"
+            android:contentDescription="@string/profile_image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/round_person"
+            app:shapeAppearanceOverlay="@style/circle" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/profile_ll_margin"
+            android:orientation="vertical">
+
+          <com.google.android.material.textview.MaterialTextView
+              android:id="@+id/tv_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/name"
+              android:textStyle="bold"
+              android:textSize="@dimen/profile_large_text_size" />
+
+          <com.google.android.material.textview.MaterialTextView
+              android:id="@+id/tv_username"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/username"
+              android:textSize="@dimen/profile_medium_text_size" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+      <com.google.android.material.textview.MaterialTextView
+          android:id="@+id/tv_bio"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/profile_text_margin"
+          android:layout_marginEnd="@dimen/profile_text_margin"
+          android:layout_marginTop="@dimen/profile_ll_margin"
+          android:layout_marginBottom="@dimen/profile_text_margin"
+          android:padding="@dimen/profile_text_padding"
+          android:text="@string/bio"
+          android:textSize="@dimen/profile_medium_text_size"
+          android:background="@drawable/round_corner" />
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/profile_ll_margin">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_business"
+            android:layout_marginStart="@dimen/profile_text_margin"
+            android:contentDescription="@string/organization" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/profile_text_margin"
+            android:text="@string/organization"
+            android:textSize="@dimen/profile_medium_text_size"/>
+
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/round_location"
+            android:layout_marginStart="@dimen/profile_text_margin"
+            android:contentDescription="@string/location" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/profile_text_margin"
+            android:text="@string/location"
+            android:textSize="@dimen/profile_medium_text_size"/>
+
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/profile_ll_margin"
+          android:layout_marginStart="@dimen/profile_text_margin"
+          android:layout_marginEnd="@dimen/profile_text_margin">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/profile_ll_margin"
+            android:orientation="vertical">
+
+          <com.google.android.material.textview.MaterialTextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/followers"
+              android:textSize="@dimen/profile_medium_text_size"
+              android:textStyle="bold" />
+
+          <com.google.android.material.divider.MaterialDivider
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/one"
+              android:layout_marginTop="@dimen/divider_margin"
+              android:layout_marginBottom="@dimen/divider_margin"/>
+
+          <com.google.android.material.textview.MaterialTextView
+              android:id="@+id/tv_followers"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/profile_medium_large_text_size"
+              android:text="@string/zero"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/profile_ll_margin"
+            android:orientation="vertical">
+
+          <com.google.android.material.textview.MaterialTextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/following"
+              android:textSize="@dimen/profile_medium_text_size"
+              android:textStyle="bold" />
+
+          <com.google.android.material.divider.MaterialDivider
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/one"
+              android:layout_marginTop="@dimen/divider_margin"
+              android:layout_marginBottom="@dimen/divider_margin" />
+
+          <com.google.android.material.textview.MaterialTextView
+              android:id="@+id/tv_following"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/profile_medium_large_text_size"
+              android:text="@string/zero" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+      <com.google.android.material.textview.MaterialTextView
+          android:id="@+id/tv_markdown"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/profile_medium_large_text_size" />
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/profile_ll_margin">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_repositories"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/profile_large_btn_margin"
+            android:paddingVertical="@dimen/profile_large_btn_padding"
+            android:text="@string/repositories"
+            android:textSize="@dimen/profile_medium_text_size"
+            android:backgroundTint="#FF8A65"
+            app:icon="@drawable/baseline_git_repo"
+            app:iconGravity="top"
+            app:iconSize="@dimen/profile_large_btn_icon_size"
+            app:cornerRadius="@dimen/profile_large_btn_corner_radius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_organizations"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/profile_large_btn_margin"
+            android:paddingVertical="@dimen/profile_large_btn_padding"
+            android:text="@string/organizations"
+            android:textSize="@dimen/profile_medium_text_size"
+            android:backgroundTint="#FFD54F"
+            app:icon="@drawable/round_business"
+            app:iconGravity="top"
+            app:iconSize="@dimen/profile_large_btn_icon_size"
+            app:cornerRadius="@dimen/profile_large_btn_corner_radius"/>
+      </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+  </ScrollView>
+
+  <ProgressBar
+      android:id="@+id/pb_profile"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
