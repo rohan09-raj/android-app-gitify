@@ -5,13 +5,11 @@ import com.example.gitify.models.Repo
 import com.example.gitify.models.User
 
 interface RepoRepository  {
+    suspend fun getRepos(): MutableList<Repo>
 
     suspend fun insert(repo: Repo)
 
     suspend fun update(repo: Repo)
 
     suspend fun delete(repo: Repo)
-
-    suspend fun getRepos(): MutableList<Repo>
-
 }

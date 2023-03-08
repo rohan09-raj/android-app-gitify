@@ -45,8 +45,9 @@ class SignInActivity : AppCompatActivity() {
     showDialog()
     val intent = Intent(
       Intent.ACTION_VIEW, Uri.parse(
-        "$OAUTH_LOGIN_URL?client_id=$CLIENT_ID&scope=repo%20read:org%20user"))
-
+        "$OAUTH_LOGIN_URL?client_id=$CLIENT_ID&scope=repo%20read:org%20user"
+      )
+    )
     startActivity(intent)
   }
 
@@ -58,7 +59,7 @@ class SignInActivity : AppCompatActivity() {
       if(code != null){
         showDialog()
         viewModel.getAccessToken(code)
-        Toast.makeText(this, "Login success!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Successfully Signed In!", Toast.LENGTH_SHORT).show()
       } else if((uri.getQueryParameter("error")) != null){
         Log.d(OAUTH_TAG, "error: ${uri.getQueryParameter("error")}")
         Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()

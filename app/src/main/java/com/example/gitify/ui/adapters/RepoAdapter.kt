@@ -1,5 +1,6 @@
 package com.example.gitify.ui.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isGone
@@ -10,8 +11,8 @@ import com.example.gitify.R
 import com.example.gitify.databinding.ItemRepositoryBinding
 import com.example.gitify.models.Repo
 
-class RepositoryAdapter(private val onItemClick: (url: String) -> Unit)
-  : ListAdapter<Repo, RepositoryAdapter.ViewHolder>(DiffCallback) {
+class RepoAdapter(private val context: Context, private val onItemClick: (url: String) -> Unit)
+  : ListAdapter<Repo, RepoAdapter.ViewHolder>(DiffCallback) {
 
   companion object DiffCallback : DiffUtil.ItemCallback<Repo>() {
     override fun areItemsTheSame(oldItem: Repo, newItem: Repo): Boolean {
@@ -26,21 +27,21 @@ class RepositoryAdapter(private val onItemClick: (url: String) -> Unit)
   inner class ViewHolder(var binding: ItemRepositoryBinding): RecyclerView.ViewHolder(binding.root){
     fun bind(repository: Repo){
       binding.tvTitle.text = repository.name
-      binding.tvLanguage.text = repository.language
-      binding.tvDescription.text = repository.description
       binding.tvStars.text = repository.stars.toString()
+      binding.tvDescription.text = repository.description
 
-      if (repository.description?.isNotEmpty() == true) binding.tvDescription.text = repository.description
-      else binding.tvDescription.isGone = true
+      binding.tvLanguage.text =
+        if(repository.language.isNullOrEmpty()) context.getString(R.string.unknown)
+        else repository.language
 
-      if (repository.forked) binding.tvForked.text = "Forked"
+      if (repository.forked) binding.tvForked.text = R.string.forked.toString()
       else binding.llForked.isGone = true
 
-      if (repository.isPrivate == true) {
-        binding.tvPrivate.text = "Private"
+      if (repository.isPrivate) {
+        binding.tvPrivate.text = context.getString(R.string.private_str)
         binding.ivPrivate.setImageResource(R.drawable.round_private)
       } else {
-        binding.tvPrivate.text = "Public"
+        binding.tvPrivate.text = context.getString(R.string.public_str)
         binding.ivPrivate.setImageResource(R.drawable.round_public)
       }
     }
@@ -55,7 +56,7 @@ class RepositoryAdapter(private val onItemClick: (url: String) -> Unit)
     val repository = getItem(position)
     holder.bind(repository)
     holder.binding.root.setOnClickListener {
-      repository.url?.let { it1 -> onItemClick(it1) }
+      repository.url?.let { view -> onItemClick(view) }
     }
   }
 }

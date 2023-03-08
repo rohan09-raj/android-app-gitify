@@ -27,7 +27,6 @@ class SignInViewModel @Inject constructor(
     viewModelScope.launch {
       try {
         _accessToken.value = githubAPI.getAccessToken(CLIENT_ID, CLIENT_SECRET, code)
-        Log.d(OAUTH_TAG, "AccessToken: ${_accessToken.value?.accessToken}")
       } catch (e: Exception) {
         Log.d(OAUTH_TAG, "getAccessToken: error $e")
       }

@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RepoViewModel @Inject constructor(
-    private val githubAPI: GithubAPI, private val repository : RepoRepositoryImpl): ViewModel() {
+    private val githubAPI: GithubAPI, private val repoRepositoryImpl : RepoRepositoryImpl): ViewModel() {
     private val _repositories = MutableLiveData<ArrayList<Repo>>()
 
     val repositories: LiveData<ArrayList<Repo>>
@@ -26,19 +26,17 @@ class RepoViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 _repositories.value = githubAPI.getRepositories("bearer $token")
-
-                Log.d(REPOSITORY_TAG, "getRepos: ${_repositories.value}")
             } catch (e: Exception) {
                 Log.d(REPOSITORY_TAG, "getRepos: error $e")
             }
         }
     }
 
-    suspend fun insert(repo: Repo) = repository.insert(repo)
+    suspend fun getRepos(): MutableList<Repo> = repoRepositoryImpl.getRepos()
 
-    suspend fun update(repo: Repo) = repository.update(repo)
+    suspend fun insert(repo: Repo) = repoRepositoryImpl.insert(repo)
 
-    suspend fun delete(repo: Repo) = repository.delete(repo)
+    suspend fun update(repo: Repo) = repoRepositoryImpl.update(repo)
 
-    suspend fun getRepos(): MutableList<Repo> = repository.getRepos()
+    suspend fun delete(repo: Repo) = repoRepositoryImpl.delete(repo)
 }

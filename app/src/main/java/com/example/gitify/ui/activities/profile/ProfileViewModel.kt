@@ -17,44 +17,27 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-  private val githubAPI: GithubAPI, private val repository : ProfileRepositoryImpl, ): ViewModel() {
+  private val githubAPI: GithubAPI, private val profileRepositoryImpl: ProfileRepositoryImpl): ViewModel() {
     private val _userData = MutableLiveData<User>()
-    private val _repositories = MutableLiveData<ArrayList<Repo>>()
 
     val userData: LiveData<User>
       get() = _userData
-    val repositories: LiveData<ArrayList<Repo>>
-      get() = _repositories
-
 
     fun getUserData(token: String) {
       viewModelScope.launch {
         try {
           _userData.value = githubAPI.getUserData("bearer $token")
-          Log.d(USER_TAG, "getUserData: ${_userData.value}")
         } catch (e: Exception) {
           Log.d(USER_TAG, "getUserData: error $e")
         }
       }
     }
+    suspend fun getUser() = profileRepositoryImpl.getUser()
 
-    fun getRepositories(token: String){
-      viewModelScope.launch {
-        try {
-          _repositories.value = githubAPI.getRepositories("bearer $token")
+    suspend fun insert(user: User) = profileRepositoryImpl.insert(user)
 
-          Log.d(REPOSITORY_TAG, "getRepos: ${_repositories.value}")
-        } catch (e: Exception) {
-          Log.d(REPOSITORY_TAG, "getRepos: error $e")
-        }
-      }
-    }
+    suspend fun update(user: User) = profileRepositoryImpl.update(user)
 
-  suspend fun insert(user: User) = repository.insert(user)
+    suspend fun delete(user: User) = profileRepositoryImpl.delete(user)
 
-  suspend fun update(user: User) = repository.update(user)
-
-  suspend fun delete(user: User) = repository.delete(user)
-
-  suspend fun getUserByName(name: String) = repository.getUserByName(name)
   }

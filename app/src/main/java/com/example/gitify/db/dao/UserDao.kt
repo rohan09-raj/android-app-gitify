@@ -5,8 +5,8 @@ import com.example.gitify.models.User
 
 @Dao
 interface UserDao {
-    @Query("SELECT * FROM user WHERE name LIKE :name LIMIT 1")
-    suspend fun getUserByName(name: String): User
+    @Query("SELECT * FROM user LIMIT 1")
+    suspend fun getUser(): User
 
     @Insert
     suspend fun insert(user: User)

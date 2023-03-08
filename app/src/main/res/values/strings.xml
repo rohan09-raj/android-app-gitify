@@ -20,4 +20,10 @@
   <string name="following">Following</string>
   <string name="repositories">Repositories</string>
   <string name="organizations">Organizations</string>
+
+  <!--Repository Activity-->
+  <string name="forked">Forked</string>
+  <string name="private_str">Private</string>
+  <string name="public_str">Public</string>
+  <string name="unknown">Unknown</string>
 </resources>

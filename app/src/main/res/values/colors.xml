@@ -10,5 +10,5 @@
 
   <color name="primary_light">#313944</color>
   <color name="primary_dark">#2C333D</color>
-  <color name="primary_background">#EFEFEF</color>
+  <color name="primary_btn_bg">#FF8A65</color>
 </resources>

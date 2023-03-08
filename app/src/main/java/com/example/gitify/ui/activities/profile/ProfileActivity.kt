@@ -1,15 +1,16 @@
 package com.example.gitify.ui.activities.profile
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -23,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
@@ -46,6 +48,7 @@ class ProfileActivity : AppCompatActivity() {
 
     binding = ActivityProfileBinding.inflate(layoutInflater)
     setContentView(binding.root)
+
     setSupportActionBar(binding.appToolbar)
     supportActionBar?.setDisplayShowTitleEnabled(false)
 
@@ -64,7 +67,11 @@ class ProfileActivity : AppCompatActivity() {
     setNavigationHandler()
   }
 
+  @SuppressLint("RestrictedApi")
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    if (menu is MenuBuilder) {
+      menu.setOptionalIconsVisible(true)
+    }
     val inflater: MenuInflater = menuInflater
     inflater.inflate(R.menu.menu_options, menu)
     return true
@@ -82,7 +89,7 @@ class ProfileActivity : AppCompatActivity() {
 
   private fun logout() {
     sharedPref.accessToken = ""
-    Toast.makeText(this, "Logout success!", Toast.LENGTH_SHORT).show()
+    Toast.makeText(this, "Successfully Signed Out!", Toast.LENGTH_SHORT).show()
     val intent = Intent(this, SignInActivity::class.java)
     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
     startActivity(intent)
@@ -91,29 +98,21 @@ class ProfileActivity : AppCompatActivity() {
 
   private fun setProfileDataToDB() {
     CoroutineScope(Dispatchers.Main).launch {
-      val user = viewModel.getUserByName("Rohan Raj Gupta")
+      val user = viewModel.getUser()
+      // If user is not in the database, insert it
       if (user == null) {
         viewModel.userData.observe(this@ProfileActivity) {
           CoroutineScope(Dispatchers.Main).launch {
-            val user = viewModel.getUserByName("Rohan Raj Gupta")
-            if (user == null) {
               viewModel.insert(it)
-            } else {
-              viewModel.update(it)
-            }
-            Log.d("ProfileActivity", "setProfileDataToDB: ${it.bio}")
-
-            Log.d("ProfileActivity1", "setProfileDataToDB: ${user?.bio}")
           }.invokeOnCompletion { setProfileData() }
         }
       }
+      // If user is in the database, first set it from the database
+      // then update it using the API
       else {
-        Log.d("ProfileActivity", "setProfileDataToDB: ${user.bio}")
         setProfileData()
-
         viewModel.userData.observe(this@ProfileActivity) {
           CoroutineScope(Dispatchers.Main).launch {
-            val user = viewModel.getUserByName("Rohan Raj Gupta")
             viewModel.update(it)
           }.invokeOnCompletion { setProfileData() }
         }
@@ -122,30 +121,17 @@ class ProfileActivity : AppCompatActivity() {
   }
 
   private fun setProfileData() {
-//    viewModel.userData.observe(this) {
-//      binding.tvName.text = it?.name
-//      binding.tvUsername.text = it?.username
-//      binding.tvCompany.text = it?.company
-//      binding.tvLocation.text = it?.location
-//      binding.tvBio.text = it?.bio
-//      binding.tvFollowers.text = it?.followers.toString()
-//      binding.tvFollowing.text = it?.following.toString()
-//      Glide.with(binding.ivAvatar.context)
-//        .load(it?.avatarUrl)
-//        .into(binding.ivAvatar)
-//    }
-    // set profile data from db
     CoroutineScope(Dispatchers.Main).launch {
-      val user = viewModel.getUserByName("Rohan Raj Gupta")
-      binding.tvName.text = user?.name
-      binding.tvUsername.text = user?.username
-      binding.tvCompany.text = user?.company
-      binding.tvLocation.text = user?.location
-      binding.tvBio.text = user?.bio
-      binding.tvFollowers.text = user?.followers.toString()
-      binding.tvFollowing.text = user?.following.toString()
+      val user = viewModel.getUser()
+      binding.tvName.text = user.name
+      binding.tvUsername.text = user.username
+      binding.tvCompany.text = user.company
+      binding.tvLocation.text = user.location
+      binding.tvBio.text = user.bio
+      binding.tvFollowers.text = user.followers.toString()
+      binding.tvFollowing.text = user.following.toString()
       Glide.with(binding.ivAvatar.context)
-        .load(user?.avatarUrl)
+        .load(user.avatarUrl)
         .into(binding.ivAvatar)
 
       binding.scrollView.isVisible = true

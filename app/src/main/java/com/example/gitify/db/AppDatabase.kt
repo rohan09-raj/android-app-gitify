@@ -7,7 +7,6 @@ import com.example.gitify.db.dao.UserDao
 import com.example.gitify.models.Repo
 import com.example.gitify.models.User
 
-
 @Database(
     entities = [User::class, Repo::class],
     version = 1,
