@@ -9,7 +9,7 @@
 
   <com.google.android.material.appbar.AppBarLayout
       android:id="@+id/app_bar"
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
@@ -19,20 +19,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-      <ImageView
-          android:id="@+id/iv_logo"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:src="@drawable/gitify"
-          android:layout_gravity="center"
-          android:contentDescription="@string/app_name" />
-
       <com.google.android.material.appbar.MaterialToolbar
           android:id="@+id/app_toolbar"
           android:layout_width="match_parent"
-          android:layout_height="?attr/actionBarSize"
-          app:menu="@menu/menu_options" />
+          android:layout_height="match_parent"
+          app:menu="@menu/menu_options"
+          app:title="@string/repositories"
+          app:navigationIcon="@drawable/round_arrow_back"
+          app:titleTextAppearance="@style/Theme.Gitify.ActionBar.TextAppearance"/>
 
     </FrameLayout>
   </com.google.android.material.appbar.AppBarLayout>
@@ -41,6 +35,7 @@
       android:id="@+id/rv_repository"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/recycler_view_margin"
       android:clipToPadding="false"
       android:visibility="invisible"
       app:layout_constraintLeft_toLeftOf="parent"
@@ -48,7 +43,7 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintTop_toBottomOf="@id/app_bar"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-      tools:listitem="@layout/item_repository" />
+      tools:listitem="@layout/item_repo" />
 
   <ProgressBar
       android:id="@+id/pb_repo"

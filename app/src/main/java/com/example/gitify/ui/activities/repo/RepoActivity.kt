@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
@@ -47,8 +48,7 @@ class RepoActivity : AppCompatActivity() {
 
     binding = ActivityRepoBinding.inflate(layoutInflater)
     setContentView(binding.root)
-
-    setSupportActionBar(binding.appToolbar)
+    setActionBar()
 
     sharedPref = SharedPreferences(this)
 
@@ -60,11 +60,7 @@ class RepoActivity : AppCompatActivity() {
     setRepoDataToDB()
   }
 
-  @SuppressLint("RestrictedApi")
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    if (menu is MenuBuilder) {
-      menu.setOptionalIconsVisible(true)
-    }
     val inflater: MenuInflater = menuInflater
     inflater.inflate(R.menu.menu_options, menu)
     return true
@@ -77,6 +73,13 @@ class RepoActivity : AppCompatActivity() {
         true
       }
       else -> super.onOptionsItemSelected(item)
+    }
+  }
+
+  private fun setActionBar() {
+    setSupportActionBar(binding.appToolbar)
+    binding.appToolbar.setNavigationOnClickListener {
+      onBackPressedDispatcher.onBackPressed()
     }
   }
 

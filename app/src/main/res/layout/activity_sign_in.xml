@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/black"
+  android:background="@color/md_theme_dark_background"
   tools:context=".ui.activities.signin.SignInActivity">
 
   <androidx.appcompat.widget.LinearLayoutCompat
@@ -18,7 +18,7 @@
 
     <ImageView
       android:id="@+id/iv_gitify_logo"
-      android:layout_width="@dimen/splash_screen_image_width"
+      android:layout_width="@dimen/screen_image_width"
       android:layout_height="wrap_content"
       android:src="@drawable/img_splash"
       android:contentDescription="@string/app_name" />
@@ -28,7 +28,7 @@
       android:layout_width="match_parent"
       android:layout_height="@dimen/sign_in_btn_height"
       android:padding="@dimen/sign_in_btn_padding"
-      android:textSize="@dimen/sign_in_btn_text_size"
+      android:textSize="@dimen/text_size_16"
       android:text="@string/sign_in_with_github"
       app:icon="@drawable/ic_gitify"
       app:iconSize="@dimen/sign_in_btn_icon_size"

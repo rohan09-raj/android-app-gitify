@@ -1,29 +1,31 @@
 <resources>
   <string name="app_name">Gitify</string>
+
   <!--Custom Dialog Loading-->
   <string name="loading">Loading</string>
 
   <!--SignIn Activity-->
   <string name="sign_in_with_github">Sign In with GitHub</string>
 
-  <!--(Profile, Repository, Organization) Activity-->
+  <!--(Profile, Repository) Activity-->
   <string name="sign_out">Sign Out</string>
-
-  <string name="zero">0</string>
-  <string name="profile_image">Profile Image</string>
-  <string name="name">Name</string>
-  <string name="username">Username</string>
-  <string name="bio">Bio</string>
-  <string name="organization">Organization</string>
-  <string name="location">Location</string>
-  <string name="followers">Followers</string>
-  <string name="following">Following</string>
-  <string name="repositories">Repositories</string>
-  <string name="organizations">Organizations</string>
 
   <!--Repository Activity-->
   <string name="forked">Forked</string>
   <string name="private_str">Private</string>
   <string name="public_str">Public</string>
   <string name="unknown">Unknown</string>
+
+  <!--Repository Item-->
+  <string name="access">Access</string>
+  <string name="language">Language</string>
+  <string name="starred">Starred</string>
+
+  <!--Profile Activity-->
+  <string name="profile_image">Profile Image</string>
+  <string name="repositories">Repositories</string>
+  <string name="location">Location</string>
+  <string name="company">Company</string>
+  <string name="followers">Followers</string>
+  <string name="following">Following</string>
 </resources>

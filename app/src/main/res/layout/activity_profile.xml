@@ -22,7 +22,7 @@
       <com.google.android.material.appbar.MaterialToolbar
           android:id="@+id/app_toolbar"
           android:layout_width="match_parent"
-          android:layout_height="?attr/actionBarSize"
+          android:layout_height="match_parent"
           app:menu="@menu/menu_options" />
 
       <ImageView
@@ -49,7 +49,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/profile_ll_margin"
+        android:layout_margin="@dimen/linear_layout_margin"
         android:orientation="vertical">
 
       <androidx.appcompat.widget.LinearLayoutCompat
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="@dimen/profile_ll_margin"
+            android:layout_marginStart="@dimen/linear_layout_margin"
             android:orientation="vertical">
 
           <com.google.android.material.textview.MaterialTextView
@@ -78,165 +78,167 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textStyle="bold"
-              android:textSize="@dimen/profile_large_text_size" />
+              android:textSize="@dimen/text_size_24" />
 
           <com.google.android.material.textview.MaterialTextView
               android:id="@+id/tv_username"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textSize="@dimen/profile_medium_text_size" />
+              android:textSize="@dimen/text_size_16" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
       </androidx.appcompat.widget.LinearLayoutCompat>
 
-      <com.google.android.material.textview.MaterialTextView
-          android:id="@+id/tv_bio"
+      <com.google.android.material.card.MaterialCardView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginStart="@dimen/profile_text_margin"
-          android:layout_marginEnd="@dimen/profile_text_margin"
-          android:layout_marginTop="@dimen/profile_ll_margin"
-          android:layout_marginBottom="@dimen/profile_text_margin"
-          android:padding="@dimen/profile_text_padding"
-          android:textSize="@dimen/profile_medium_text_size"
-          android:background="@drawable/round_corner" />
-
-      <androidx.appcompat.widget.LinearLayoutCompat
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/profile_ll_margin">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/outline_business"
-            android:layout_marginStart="@dimen/profile_text_margin"
-            android:contentDescription="@string/organization" />
+          android:layout_marginTop="@dimen/profile_element_margin_top"
+          app:contentPadding="@dimen/card_view_padding"
+          app:cardCornerRadius="@dimen/card_view_corner_radius">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_company"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_bio"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="@dimen/profile_text_margin"
-            android:textSize="@dimen/profile_medium_text_size"/>
+            android:padding="@dimen/profile_text_padding"
+            android:textSize="@dimen/text_size_16" />
 
-      </androidx.appcompat.widget.LinearLayoutCompat>
+      </com.google.android.material.card.MaterialCardView>
 
-      <androidx.appcompat.widget.LinearLayoutCompat
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/round_location"
-            android:layout_marginStart="@dimen/profile_text_margin"
-            android:contentDescription="@string/location" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="@dimen/profile_text_margin"
-            android:textSize="@dimen/profile_medium_text_size"/>
-
-      </androidx.appcompat.widget.LinearLayoutCompat>
-
-      <androidx.appcompat.widget.LinearLayoutCompat
+      <com.google.android.material.card.MaterialCardView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/profile_ll_margin"
-          android:layout_marginStart="@dimen/profile_text_margin"
-          android:layout_marginEnd="@dimen/profile_text_margin">
+          android:layout_marginTop="@dimen/profile_element_margin_top"
+          app:contentPadding="@dimen/card_view_padding"
+          app:cardCornerRadius="@dimen/card_view_corner_radius">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="@dimen/zero"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="@dimen/profile_ll_margin"
             android:orientation="vertical">
 
-          <com.google.android.material.textview.MaterialTextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="@string/followers"
-              android:textSize="@dimen/profile_medium_text_size"
-              android:textStyle="bold" />
-
-          <com.google.android.material.divider.MaterialDivider
+          <androidx.appcompat.widget.LinearLayoutCompat
               android:layout_width="match_parent"
-              android:layout_height="@dimen/one"
-              android:layout_marginTop="@dimen/divider_margin"
-              android:layout_marginBottom="@dimen/divider_margin"/>
+              android:layout_height="wrap_content">
 
-          <com.google.android.material.textview.MaterialTextView
-              android:id="@+id/tv_followers"
-              android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/outline_business"
+                android:layout_marginStart="@dimen/profile_image_margin"
+                android:contentDescription="@string/company" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/profile_text_margin"
+                android:textSize="@dimen/text_size_16"/>
+
+          </androidx.appcompat.widget.LinearLayoutCompat>
+
+          <androidx.appcompat.widget.LinearLayoutCompat
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:textSize="@dimen/profile_medium_large_text_size"
-              android:text="@string/zero"/>
+              android:layout_marginTop="@dimen/profile_ll_margin">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/round_location"
+                android:layout_marginStart="@dimen/profile_image_margin"
+                android:contentDescription="@string/location" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/profile_text_margin"
+                android:textSize="@dimen/text_size_16"/>
+
+          </androidx.appcompat.widget.LinearLayoutCompat>
+
+          <androidx.appcompat.widget.LinearLayoutCompat
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/profile_ll_margin_2"
+              android:layout_marginHorizontal="@dimen/profile_ll_margin">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+              <com.google.android.material.textview.MaterialTextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:text="@string/followers"
+                  android:textSize="@dimen/text_size_14"
+                  android:textStyle="bold" />
+
+              <com.google.android.material.divider.MaterialDivider
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/two"
+                  android:layout_margin="@dimen/divider_margin"/>
+
+              <com.google.android.material.textview.MaterialTextView
+                  android:id="@+id/tv_followers"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:textSize="@dimen/text_size_16"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+              <com.google.android.material.textview.MaterialTextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:text="@string/following"
+                  android:textSize="@dimen/text_size_14"
+                  android:textStyle="bold" />
+
+              <com.google.android.material.divider.MaterialDivider
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/two"
+                  android:layout_margin="@dimen/divider_margin"/>
+
+              <com.google.android.material.textview.MaterialTextView
+                  android:id="@+id/tv_following"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:textSize="@dimen/text_size_16" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+          </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="@dimen/zero"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="@dimen/profile_ll_margin"
-            android:orientation="vertical">
+      </com.google.android.material.card.MaterialCardView>
 
-          <com.google.android.material.textview.MaterialTextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="@string/following"
-              android:textSize="@dimen/profile_medium_text_size"
-              android:textStyle="bold" />
-
-          <com.google.android.material.divider.MaterialDivider
-              android:layout_width="match_parent"
-              android:layout_height="@dimen/one"
-              android:layout_marginTop="@dimen/divider_margin"
-              android:layout_marginBottom="@dimen/divider_margin" />
-
-          <com.google.android.material.textview.MaterialTextView
-              android:id="@+id/tv_following"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="@dimen/profile_medium_large_text_size"
-              android:text="@string/zero" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-      </androidx.appcompat.widget.LinearLayoutCompat>
-
-      <com.google.android.material.textview.MaterialTextView
-          android:id="@+id/tv_markdown"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textSize="@dimen/profile_medium_large_text_size" />
-
-      <androidx.appcompat.widget.LinearLayoutCompat
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/btn_repositories"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/profile_ll_margin">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_repositories"
-            android:layout_width="@dimen/zero"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/profile_large_btn_margin"
-            android:paddingVertical="@dimen/profile_large_btn_padding"
-            android:text="@string/repositories"
-            android:textSize="@dimen/profile_medium_text_size"
-            android:backgroundTint="#FF8A65"
-            app:icon="@drawable/baseline_git_repo"
-            app:iconGravity="top"
-            app:iconSize="@dimen/profile_large_btn_icon_size"
-            app:cornerRadius="@dimen/profile_large_btn_corner_radius"/>
-
-      </androidx.appcompat.widget.LinearLayoutCompat>
+          android:layout_weight="1"
+          android:layout_marginTop="@dimen/profile_element_margin_top"
+          android:paddingVertical="@dimen/profile_btn_padding"
+          android:text="@string/repositories"
+          android:textSize="@dimen/text_size_18"
+          app:icon="@drawable/baseline_git_repo"
+          app:cornerRadius="@dimen/profile_btn_corner_radius"
+          app:iconSize="@dimen/profile_btn_icon_size" />
     </androidx.appcompat.widget.LinearLayoutCompat>
   </ScrollView>
 

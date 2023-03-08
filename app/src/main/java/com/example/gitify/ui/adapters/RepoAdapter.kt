@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gitify.R
-import com.example.gitify.databinding.ItemRepositoryBinding
+import com.example.gitify.databinding.ItemRepoBinding
 import com.example.gitify.models.Repo
 
 class RepoAdapter(private val context: Context, private val onItemClick: (url: String) -> Unit)
@@ -24,7 +24,7 @@ class RepoAdapter(private val context: Context, private val onItemClick: (url: S
     }
   }
 
-  inner class ViewHolder(var binding: ItemRepositoryBinding): RecyclerView.ViewHolder(binding.root){
+  inner class ViewHolder(var binding: ItemRepoBinding): RecyclerView.ViewHolder(binding.root){
     fun bind(repository: Repo){
       binding.tvTitle.text = repository.name
       binding.tvStars.text = repository.stars.toString()
@@ -48,7 +48,7 @@ class RepoAdapter(private val context: Context, private val onItemClick: (url: S
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-    val binding = ItemRepositoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    val binding = ItemRepoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     return ViewHolder(binding)
   }
 

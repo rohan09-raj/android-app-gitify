@@ -67,11 +67,7 @@ class ProfileActivity : AppCompatActivity() {
     setNavigationHandler()
   }
 
-  @SuppressLint("RestrictedApi")
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    if (menu is MenuBuilder) {
-      menu.setOptionalIconsVisible(true)
-    }
     val inflater: MenuInflater = menuInflater
     inflater.inflate(R.menu.menu_options, menu)
     return true

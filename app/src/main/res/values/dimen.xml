@@ -1,44 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="zero">0dp</dimen>
-
-    <!--Divider-->
-    <dimen name="divider_margin">4dp</dimen>
-
-    <!--Round Corner-->
-    <dimen name="one">1dp</dimen>
-    <dimen name="corner_radius">5dp</dimen>
+    <dimen name="two">2dp</dimen>
 
     <!--Custom Dialog Loading-->
     <dimen name="custom_dialog_loading_size">128dp</dimen>
 
     <!--(Splash Screen, SignIn) Activity-->
-    <dimen name="splash_screen_image_width">150dp</dimen>
+    <dimen name="screen_image_width">150dp</dimen>
+
+    <!--Divider-->
+    <dimen name="divider_margin">5dp</dimen>
+
+    <!--Toolbar-->
+    <dimen name="toolbar_icon_padding">10dp</dimen>
+
+    <!--RecyclerView-->
+    <dimen name="recycler_view_margin">20dp</dimen>
+
+    <!--Text Size-->
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+
+    <!--Card View-->
+    <dimen name="card_view_margin">8dp</dimen>
+    <dimen name="card_view_corner_radius">8dp</dimen>
+    <dimen name="card_view_padding">10dp</dimen>
+    <dimen name="card_view_elevation">4dp</dimen>
+
+    <!--Linear Layout-->
+    <dimen name="linear_layout_margin">20dp</dimen>
 
     <!--Sign In Activity-->
     <dimen name="sign_in_btn_height">70dp</dimen>
     <dimen name="sign_in_btn_padding">10dp</dimen>
     <dimen name="sign_in_btn_icon_size">24dp</dimen>
     <dimen name="sign_in_btn_corner_radius">15dp</dimen>
-    <dimen name="sign_in_btn_text_size">16sp</dimen>
+
+    <!--Repo Item-->
+    <dimen name="repo_element_margin">5dp</dimen>
+    <dimen name="repo_image_margin">8dp</dimen>
+    <dimen name="repo_text_margin">8dp</dimen>
 
     <!--Profile Activity-->
-    <dimen name="profile_ll_margin">14dp</dimen>
-
     <dimen name="profile_image_size">75dp</dimen>
-    <dimen name="profile_image_margin">10dp</dimen>
-    <dimen name="profile_image_corner_radius">10dp</dimen>
+    <dimen name="profile_element_margin_top">30dp</dimen>
     <dimen name="profile_text_padding">10dp</dimen>
     <dimen name="profile_text_margin">5dp</dimen>
-    <dimen name="profile_large_btn_margin">5dp</dimen>
-    <dimen name="profile_large_btn_padding">10dp</dimen>
-    <dimen name="profile_large_btn_corner_radius">8dp</dimen>
-    <dimen name="profile_large_btn_icon_size">50dp</dimen>
-    <dimen name="profile_large_text_size">24sp</dimen>
-    <dimen name="profile_medium_large_text_size">22sp</dimen>
-    <dimen name="profile_medium_text_size">18sp</dimen>
-
-    <dimen name="toolbar_icon_padding">10dp</dimen>
-
-    <dimen name="recycler_view_padding">4dp</dimen>
+    <dimen name="profile_image_margin">5dp</dimen>
+    <dimen name="profile_ll_margin">8dp</dimen>
+    <dimen name="profile_ll_margin_2">20dp</dimen>
+    <dimen name="profile_btn_padding">10dp</dimen>
+    <dimen name="profile_btn_corner_radius">8dp</dimen>
+    <dimen name="profile_btn_icon_size">30dp</dimen>
 </resources>

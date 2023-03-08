@@ -5,14 +5,11 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:layout_marginVertical="@dimen/card_view_margin"
     android:orientation="vertical"
-    android:layout_marginHorizontal="8dp"
-    android:layout_marginVertical="8dp"
-    android:foreground="?android:attr/selectableItemBackground"
-    app:cardCornerRadius="18dp"
-    app:contentPadding="5dp"
-    app:elevation="16dp"
+    app:cardCornerRadius="@dimen/card_view_corner_radius"
+    app:contentPadding="@dimen/card_view_padding"
+    app:elevation="@dimen/card_view_elevation"
     app:cardPreventCornerOverlap="true"
     app:elevationOverlayEnabled="true">
 
@@ -21,19 +18,16 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center_vertical"
-      android:layout_marginHorizontal="20dp"
-      android:paddingVertical="20dp"
-      android:orientation="vertical"
-      android:minHeight="72dp">
+      android:layout_margin="@dimen/linear_layout_margin"
+      android:orientation="vertical">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="website-my"
-        android:singleLine="true"
+        android:textSize="@dimen/text_size_20"
         android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.TileTitle"
+        android:singleLine="true"
         android:ellipsize="marquee"
         android:fadingEdge="horizontal" />
 
@@ -41,17 +35,14 @@
         android:id="@+id/tv_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Rag tag team of sotfware devs"
-        android:textAppearance="@style/TextAppearance.Small"
-        android:textColor="?android:attr/textColorSecondary"
+        android:layout_marginTop="@dimen/repo_element_margin"
+        android:textSize="@dimen/text_size_16"
         android:ellipsize="end" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:gravity="center_vertical">
+        android:layout_marginTop="@dimen/repo_element_margin">
 
       <androidx.appcompat.widget.LinearLayoutCompat
           android:id="@+id/ll_forked"
@@ -63,17 +54,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/round_forked"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/organization" />
+            android:layout_marginEnd="@dimen/repo_image_margin"
+            android:contentDescription="@string/forked" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_forked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="Forked"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="?android:attr/textColorSecondary"
+            android:layout_marginEnd="@dimen/repo_text_margin"
+            android:text="@string/forked"
+            android:textSize="@dimen/text_size_16"
             android:ellipsize="end" />
 
       </androidx.appcompat.widget.LinearLayoutCompat>
@@ -89,17 +79,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/round_private"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/organization" />
+            android:layout_marginEnd="@dimen/repo_image_margin"
+            android:contentDescription="@string/access" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_private"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Private"
-            android:layout_marginEnd="8dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="?android:attr/textColorSecondary"
+            android:layout_marginEnd="@dimen/repo_text_margin"
+            android:textSize="@dimen/text_size_16"
             android:ellipsize="end" />
 
       </androidx.appcompat.widget.LinearLayoutCompat>
@@ -109,7 +97,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/repo_element_margin"
         android:gravity="center_vertical">
 
       <androidx.appcompat.widget.LinearLayoutCompat
@@ -122,18 +110,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/round_star"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/organization"
+            android:layout_marginEnd="@dimen/repo_image_margin"
+            android:contentDescription="@string/starred"
             app:tint="@android:color/holo_orange_light" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_stars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/zero"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="?android:attr/textColorSecondary"
+            android:layout_marginEnd="@dimen/repo_text_margin"
+            android:textSize="@dimen/text_size_16"
             android:ellipsize="end" />
 
       </androidx.appcompat.widget.LinearLayoutCompat>
@@ -148,17 +134,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_circle"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/organization"
+            android:layout_marginEnd="@dimen/repo_image_margin"
+            android:contentDescription="@string/language"
             app:tint="@android:color/holo_blue_dark"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="?android:attr/textColorSecondary"
+            android:layout_marginEnd="@dimen/repo_text_margin"
+            android:textSize="@dimen/text_size_16"
             android:ellipsize="end" />
 
       </androidx.appcompat.widget.LinearLayoutCompat>
