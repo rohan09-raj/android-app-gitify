@@ -37,6 +37,7 @@
 
     <!--Sign In Activity-->
     <dimen name="sign_in_btn_height">70dp</dimen>
+    <dimen name="sign_in_btn_margin">40dp</dimen>
     <dimen name="sign_in_btn_padding">10dp</dimen>
     <dimen name="sign_in_btn_icon_size">24dp</dimen>
     <dimen name="sign_in_btn_corner_radius">15dp</dimen>
