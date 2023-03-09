@@ -30,4 +30,17 @@ https://user-images.githubusercontent.com/78433013/223974902-dc695772-258d-4d4c-
 - Dagger Hilt
 
 ## How to setup locally?
-
+- Clone the repository
+- Create a GitHub OAuth App
+- Add the following details when creating the OAuth App
+```
+Application name: Gitify
+Homepage URL: http://localhost
+Authorization callback URL: gitify://callback
+```
+- Create a apikey.properties file in the root directory and add the following lines
+```
+GITHUB_CLIENT_ID="<YOUR_GITHUB_CLIENT_ID>"
+GITHUB_CLIENT_SECRET="<YOUR_GITHUB_CLIENT_SECRET>"
+```
+- Build and Run the app
