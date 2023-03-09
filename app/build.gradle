@@ -6,6 +6,10 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     namespace 'com.example.gitify'
     compileSdk 33
@@ -18,15 +22,19 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        // App Configuration
-        manifestPlaceholders= [GITHUB_CLIENT_ID:GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET:GITHUB_CLIENT_SECRET]
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "GITHUB_CLIENT_ID", apikeyProperties['GITHUB_CLIENT_ID'])
+            buildConfigField("String", "GITHUB_CLIENT_SECRET", apikeyProperties['GITHUB_CLIENT_SECRET'])
+        }
+
+        debug {
+            buildConfigField("String", "GITHUB_CLIENT_ID", apikeyProperties['GITHUB_CLIENT_ID'])
+            buildConfigField("String", "GITHUB_CLIENT_SECRET", apikeyProperties['GITHUB_CLIENT_SECRET'])
         }
     }
     compileOptions {

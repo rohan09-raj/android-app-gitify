@@ -1,5 +1,7 @@
 package com.example.gitify.utils
 
+import com.example.gitify.BuildConfig
+
 object Constants {
   const val APP_NAME = "Gitify"
   const val GITHUB_DOMAIN_URL = "https://github.com/"
@@ -7,8 +9,8 @@ object Constants {
 
   const val OAUTH_LOGIN_URL = "https://github.com/login/oauth/authorize"
   const val REDIRECT_URI = "gitify://callback"
-  const val CLIENT_ID = "55a87cdf0c4160284ed1"
-  const val CLIENT_SECRET = "5d7c04915293bd55f8d00bc4d141d6aa7066bf60"
+  const val CLIENT_ID = BuildConfig.GITHUB_CLIENT_ID
+  const val CLIENT_SECRET = BuildConfig.GITHUB_CLIENT_SECRET
 
   const val OAUTH_TAG = "OAUTH_GITHUB"
   const val USER_TAG = "USER"
