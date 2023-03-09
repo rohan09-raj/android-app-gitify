@@ -1,18 +1,18 @@
 # android-app-gitify
 
 ## Description
-A simple android application for Signing in with user's GitHub account and displaying the profile data and repositories of the GitHub user.
+A simple android application for signing in with user's GitHub account and displaying the profile data and repositories of the GitHub user.
 
 ## Features
 - SignIn/SignOut using GitHub OAuth
 - Share GitHub Profile
 - View user's own profile info
 - View and Direct to user's GitHub Repositories
-- Material3 Adaptive Theme
+- Material3 Dynamic Theme (Android 12 and above)
 - Offline support using cached data after initial data load 
 
 ## Android APK
-
+https://github.com/rohan09-raj/android-app-gitify/releases/download/v1.0/app-release.apk
 
 ## Activities
  SignIn Activity | Profile Activity | Repository Activity      
@@ -30,9 +30,9 @@ https://user-images.githubusercontent.com/78433013/223974902-dc695772-258d-4d4c-
 - Dagger Hilt
 
 ## How to setup locally?
-- Clone the repository
+- Clone the repository to your local machine
 - Create a GitHub OAuth App
-- Add the following details when creating the OAuth App
+- Add the following details while creating the OAuth App
 ```
 Application name: Gitify
 Homepage URL: http://localhost
