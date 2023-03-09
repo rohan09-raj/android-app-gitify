@@ -15,8 +15,5 @@ object Constants {
   const val REPOSITORY_TAG = "REPOSITORY"
 
   const val EXTRA_ACCESS_TOKEN = "AccessToken"
-  const val EXTRA_USER_DATA = "UserData"
-  const val EXTRA_REPOSITORY_DATA = "RepositoryData"
-
   const val EXTRA_REPOSITORY_URL = "RepositoryUrl"
 }

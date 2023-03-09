@@ -56,5 +56,6 @@
     <dimen name="profile_ll_margin_2">20dp</dimen>
     <dimen name="profile_btn_padding">10dp</dimen>
     <dimen name="profile_btn_corner_radius">8dp</dimen>
-    <dimen name="profile_btn_icon_size">30dp</dimen>
+    <dimen name="profile_btn_icon_size">26dp</dimen>
+    <dimen name="profile_btn_margin_top">10dp</dimen>
 </resources>

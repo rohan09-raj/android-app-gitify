@@ -24,6 +24,7 @@
   <!--Profile Activity-->
   <string name="profile_image">Profile Image</string>
   <string name="repositories">Repositories</string>
+  <string name="share">Share</string>
   <string name="location">Location</string>
   <string name="company">Company</string>
   <string name="followers">Followers</string>

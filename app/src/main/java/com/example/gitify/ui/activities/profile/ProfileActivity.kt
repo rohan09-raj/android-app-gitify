@@ -1,6 +1,5 @@
 package com.example.gitify.ui.activities.profile
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +9,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -20,6 +18,7 @@ import com.example.gitify.preferences.SharedPreferences
 import com.example.gitify.ui.activities.repo.RepoActivity
 import com.example.gitify.ui.activities.signin.SignInActivity
 import com.example.gitify.utils.Constants.EXTRA_ACCESS_TOKEN
+import com.example.gitify.utils.Constants.GITHUB_DOMAIN_URL
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -60,7 +59,10 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     viewModel.userData.observe(this) {
-      Toast.makeText(this, "Hi, ${it.name}", Toast.LENGTH_SHORT).show()
+      if(it.name.isNullOrEmpty())
+        Toast.makeText(this, "Hi, ${it.username}", Toast.LENGTH_SHORT).show()
+      else
+        Toast.makeText(this, "Hi, ${it.name}", Toast.LENGTH_SHORT).show()
     }
 
     setProfileDataToDB()
@@ -119,13 +121,20 @@ class ProfileActivity : AppCompatActivity() {
   private fun setProfileData() {
     CoroutineScope(Dispatchers.Main).launch {
       val user = viewModel.getUser()
-      binding.tvName.text = user.name
+      binding.tvName.text = if(user.name.isNullOrEmpty()) user.username else user.name
       binding.tvUsername.text = user.username
-      binding.tvCompany.text = user.company
-      binding.tvLocation.text = user.location
-      binding.tvBio.text = user.bio
       binding.tvFollowers.text = user.followers.toString()
       binding.tvFollowing.text = user.following.toString()
+
+      if(user.location.isNullOrEmpty()) binding.llLocation.isGone = true
+      else binding.tvLocation.text = user.location
+
+      if(user.company.isNullOrEmpty()) binding.llCompany.isGone = true
+      else binding.tvCompany.text = user.company
+
+      if(user.bio.isNullOrEmpty()) binding.cvBio.isGone = true
+      else binding.tvBio.text = user.bio
+
       Glide.with(binding.ivAvatar.context)
         .load(user.avatarUrl)
         .into(binding.ivAvatar)
@@ -138,6 +147,14 @@ class ProfileActivity : AppCompatActivity() {
   private fun setNavigationHandler() {
     binding.btnRepositories.setOnClickListener {
         sharedPref.accessToken?.let { data -> RepoActivity.startActivity(this, data) }
+    }
+
+    binding.btnShare.setOnClickListener {
+      val sharingIntent = Intent(Intent.ACTION_SEND)
+      sharingIntent.type = "text/plain"
+      val shareBody = " ${GITHUB_DOMAIN_URL}${binding.tvUsername.text}"
+      sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+      startActivity(Intent.createChooser(sharingIntent, getString(R.string.share)))
     }
   }
 }
