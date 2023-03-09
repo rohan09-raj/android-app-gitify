@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.activities.profile.ProfileActivity">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_gravity="top"
+    android:background="@android:color/transparent">
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:clipToPadding="false"
+      app:titleCollapseMode="scale"
+      app:toolbarId="@id/app_toolbar"
+      app:forceApplySystemWindowInsetTop="true"
+      app:contentScrim="@android:color/transparent"
+      app:layout_scrollFlags="scroll|enterAlways"
+      app:scrimAnimationDuration="@integer/material_motion_duration_short_2">
+
+      <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_collapseMode="pin"
+        app:menu="@menu/menu_options" />
+
+      <ImageView
+        android:id="@+id/iv_logo"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:padding="@dimen/toolbar_icon_padding"
+          android:src="@drawable/gitify"
+          android:layout_gravity="center"
+          android:contentDescription="@string/app_name" />
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.core.widget.NestedScrollView
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:visibility="invisible">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/linear_layout_margin"
+      android:orientation="vertical">
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+          android:id="@+id/iv_avatar"
+          android:layout_width="@dimen/profile_image_size"
+          android:layout_height="@dimen/profile_image_size"
+          android:contentDescription="@string/profile_image"
+          android:scaleType="centerCrop"
+          android:src="@drawable/round_person"
+          app:shapeAppearanceOverlay="@style/circle" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginStart="@dimen/linear_layout_margin"
+          android:orientation="vertical">
+
+          <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_24" />
+
+          <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_16" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+      <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_bio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/profile_element_margin_top"
+        app:contentPadding="@dimen/card_view_padding"
+        app:cardCornerRadius="@dimen/card_view_corner_radius">
+
+        <com.google.android.material.textview.MaterialTextView
+          android:id="@+id/tv_bio"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/profile_text_padding"
+          android:textSize="@dimen/text_size_16" />
+
+      </com.google.android.material.card.MaterialCardView>
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/profile_element_margin_top">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginEnd="@dimen/card_view_margin_end"
+            app:contentPadding="@dimen/card_view_padding"
+            app:cardCornerRadius="@dimen/card_view_corner_radius">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+              <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/outline_business"
+                  android:layout_marginStart="@dimen/profile_image_margin"
+                  android:contentDescription="@string/company" />
+
+                <com.google.android.material.textview.MaterialTextView
+                  android:id="@+id/tv_company"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:layout_marginStart="@dimen/profile_text_margin"
+                  android:textSize="@dimen/text_size_16"/>
+
+              </androidx.appcompat.widget.LinearLayoutCompat>
+
+              <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_ll_margin">
+
+                <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/round_location"
+                  android:layout_marginStart="@dimen/profile_image_margin"
+                  android:contentDescription="@string/location" />
+
+                <com.google.android.material.textview.MaterialTextView
+                  android:id="@+id/tv_location"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:layout_marginStart="@dimen/profile_text_margin"
+                  android:textSize="@dimen/text_size_16"/>
+
+              </androidx.appcompat.widget.LinearLayoutCompat>
+
+              <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_ll_margin_2"
+                android:layout_marginHorizontal="@dimen/profile_ll_margin">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                  android:layout_width="@dimen/zero"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:orientation="vertical">
+
+                  <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/followers"
+                    android:textSize="@dimen/text_size_14"
+                    android:textStyle="bold" />
+
+                  <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/two"
+                    android:layout_margin="@dimen/divider_margin"/>
+
+                  <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_size_16"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                  android:layout_width="@dimen/zero"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:orientation="vertical">
+
+                  <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/following"
+                    android:textSize="@dimen/text_size_14"
+                    android:textStyle="bold" />
+
+                  <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/two"
+                    android:layout_margin="@dimen/divider_margin"/>
+
+                  <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_following"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_size_16" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+              </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+          </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+          android:layout_width="@dimen/zero"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:layout_gravity="center"
+          android:orientation="vertical">
+
+          <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_repositories"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight="1"
+            android:paddingVertical="@dimen/profile_btn_padding"
+            android:text="@string/repositories"
+            android:textSize="@dimen/text_size_18"
+            app:icon="@drawable/baseline_git_repo"
+            app:cornerRadius="@dimen/profile_btn_corner_radius"
+            app:iconSize="@dimen/profile_btn_icon_size" />
+
+          <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_share"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/profile_btn_margin_top"
+            android:paddingVertical="@dimen/profile_btn_padding"
+            android:text="@string/share"
+            android:textSize="@dimen/text_size_18"
+            app:icon="@drawable/baseline_share"
+            app:cornerRadius="@dimen/profile_btn_corner_radius"
+            app:iconSize="@dimen/profile_btn_icon_size" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+      </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+  </androidx.core.widget.NestedScrollView>
+
+  <ProgressBar
+      android:id="@+id/pb_profile"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_weight="1"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

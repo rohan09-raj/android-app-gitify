@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.activities.profile.ProfileActivity">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context=".ui.activities.profile.ProfileActivity">
 
   <com.google.android.material.appbar.AppBarLayout
-      android:id="@+id/app_bar"
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize">
+    android:id="@+id/app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_gravity="top"
+    android:background="@android:color/transparent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:clipToPadding="false"
+      app:titleCollapseMode="scale"
+      app:toolbarId="@id/app_toolbar"
+      app:forceApplySystemWindowInsetTop="true"
+      app:contentScrim="@android:color/transparent"
+      app:layout_scrollFlags="scroll|enterAlways"
+      app:scrimAnimationDuration="@integer/material_motion_duration_short_2">
 
       <com.google.android.material.appbar.MaterialToolbar
-          android:id="@+id/app_toolbar"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          app:menu="@menu/menu_options" />
+        android:id="@+id/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_collapseMode="pin"
+        app:menu="@menu/menu_options" />
 
       <ImageView
-          android:id="@+id/iv_logo"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:padding="@dimen/toolbar_icon_padding"
-          android:src="@drawable/gitify"
-          android:layout_gravity="center"
-          android:contentDescription="@string/app_name" />
+        android:id="@+id/iv_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/toolbar_icon_padding"
+        android:src="@drawable/gitify"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name" />
 
-    </FrameLayout>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
   </com.google.android.material.appbar.AppBarLayout>
 
-  <ScrollView
+  <androidx.core.widget.NestedScrollView
       android:id="@+id/scroll_view"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:visibility="visible">
+      android:visibility="gone">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -250,7 +260,7 @@
           app:cornerRadius="@dimen/profile_btn_corner_radius"
           app:iconSize="@dimen/profile_btn_icon_size" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-  </ScrollView>
+  </androidx.core.widget.NestedScrollView>
 
   <ProgressBar
       android:id="@+id/pb_profile"

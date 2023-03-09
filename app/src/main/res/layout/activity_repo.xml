@@ -20,13 +20,13 @@
         android:layout_height="match_parent">
 
       <com.google.android.material.appbar.MaterialToolbar
-          android:id="@+id/app_toolbar"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          app:menu="@menu/menu_options"
-          app:title="@string/repositories"
-          app:navigationIcon="@drawable/round_arrow_back"
-          app:titleTextAppearance="@style/Theme.Gitify.ActionBar.TextAppearance"/>
+        android:id="@+id/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:menu="@menu/menu_options"
+        app:title="@string/repositories"
+        app:navigationIcon="@drawable/round_arrow_back"
+        app:titleTextAppearance="@style/Theme.Gitify.ActionBar.TextAppearance"/>
 
     </FrameLayout>
   </com.google.android.material.appbar.AppBarLayout>
