@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
 @Entity(tableName = "repo")
 data class Repo(
@@ -19,4 +18,4 @@ data class Repo(
     @ColumnInfo val isPrivate: Boolean,
     @SerializedName("html_url")
     @ColumnInfo val url: String?
-): Serializable
+)
